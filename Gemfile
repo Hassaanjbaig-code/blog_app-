@@ -6,7 +6,6 @@ ruby '3.2.1'
 gem 'rails', '~> 7.0.4', '>= 7.0.4.3'
 gem 'rubocop', '>= 1.0', '< 2.0'
 
-
 gem 'importmap-rails'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
