@@ -991,3 +991,16 @@ Migrating to FixPosts (20230329150826)
   [1m[36mUser Create (2.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "postscounter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Update"], ["photo", "https://unsplash.com/photos/F_-0BxGuVvo"], ["bio", "Teacher from Pakistan."], ["postscounter", nil], ["created_at", "2023-03-30 15:50:30.066766"], ["updated_at", "2023-03-30 15:50:30.066766"]]
   [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT[0m
   [1m[36mPost Load (4.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."created_at" DESC LIMIT $2[0m  [["author_id", 14], ["LIMIT", 3]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6794925185100581655)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to ChangeUserAuthor (20230331114057)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.7ms)[0m  [1m[35mALTER TABLE "likes" RENAME COLUMN "user_id" TO "author_id"[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER INDEX "index_likes_on_user_id" RENAME TO "index_likes_on_author_id"[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "comments" RENAME COLUMN "user_id" TO "author_id"[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER INDEX "index_comments_on_user_id" RENAME TO "index_comments_on_author_id"[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230331114057"]]
+  [1m[36mTRANSACTION (2.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(6794925185100581655)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
