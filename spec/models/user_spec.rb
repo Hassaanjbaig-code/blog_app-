@@ -28,15 +28,16 @@ RSpec.describe User, type: :model do
   it '#recent_posts should show 3 recent posts of user' do
     first_user = User.create(name: 'Tom', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Mexico.',
                              postscounter: 1)
-    Post.create(author: first_user, title: 'Hello World', text: 'This is my first post', commentscounter: 0, likescounter: 0)
-    Post.create(author: first_user, title: 'Hello world', text: 'This is my second post', commentscounter: 0, likescounter: 0)
-    Post.create(author: first_user, title: 'Hello world', text: 'This is my third post', commentscounter: 0, likescounter: 0)
-    Post.create(author: first_user, title: 'Hello world', text: 'This is my fourth post', commentscounter: 0, likescounter: 0)
-    # Post.create(author: first_user, title: 'Hello', text: 'This is my fifth post', commentscounter: 0, likescounter: 0)
+    Post.create(author: first_user, title: 'Hello World', text: 'This is my first post', commentscounter: 0,
+                likescounter: 0)
+    Post.create(author: first_user, title: 'Hello world', text: 'This is my second post', commentscounter: 0,
+                likescounter: 0)
+    Post.create(author: first_user, title: 'Hello world', text: 'This is my third post', commentscounter: 0,
+                likescounter: 0)
+    Post.create(author: first_user, title: 'Hello world', text: 'This is my fourth post', commentscounter: 0,
+                likescounter: 0)
     curr_posts = first_user.recent_posts
     result = curr_posts.size
-
-    expect(result).to eq(3) 
+    expect(result).to eq(3)
   end
 end
-
