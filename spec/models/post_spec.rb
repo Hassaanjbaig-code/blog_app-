@@ -39,6 +39,9 @@ RSpec.describe @post, type: :model do
 
     expect(@post.likescounter).to be >= 0
   end
+  it 'update_author_posts_counter' do
+    expect(@post.author.postscounter.to_i).to eq(1)
+  end
   it '#recent_comments should show 5 recent comments on @post' do
     Comment.create(author: @user, post: @post, text: "This is my first comment")
     Comment.create(author: @user, post: @post, text: 'This is my first comment')
