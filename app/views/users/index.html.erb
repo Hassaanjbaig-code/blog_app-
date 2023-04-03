@@ -1,0 +1,8 @@
+<% @users.each do |user| %>
+    <ul>
+        <li><%= user.name %></li>
+        <li><%= user.bio %></li>
+          <td><%= link_to "show", user %></td>
+    </ul>
+<% end
+%>
