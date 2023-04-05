@@ -3,7 +3,7 @@ require 'rails-controller-testing'
 
 RSpec.describe PostsController, type: :request do
   describe 'GET /posts' do
-    before(:example) { get '/users/1/posts' }
+    before(:example) { get '/users/:id/posts' }
     it 'should check the responce is comming' do
       expect(response).to have_http_status(:ok)
     end
@@ -12,7 +12,7 @@ RSpec.describe PostsController, type: :request do
     end
   end
   describe 'GET /posts/:id' do
-    before(:example) { get '/users/1/posts/1' }
+    before(:example) { get '/users/:users_id/posts/1' }
     it 'should check the responce is comming' do
       expect(response).to have_http_status(:ok)
     end
