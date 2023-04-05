@@ -18,7 +18,7 @@ RSpec.describe PostsController, type: :request do
                           bio: 'Teacher from Bangla.', postscounter: 1,
                           created_at: '2023-03-30 12:47:48.768257', updated_at: '2023-03-30 12:47:48.768257')
       Post.create(author: @user, title: 'Hello World', text: 'This is my first @post',
-                          commentscounter: 0, likescounter: 0)
+                  commentscounter: 0, likescounter: 0)
     end
     it 'should check the responce is comming' do
       get '/users/:users_id/posts/1'

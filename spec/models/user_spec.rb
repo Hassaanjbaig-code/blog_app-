@@ -26,7 +26,8 @@ RSpec.describe User, type: :model do
     expect(subject).to_not be_valid
   end
   it '#recent_posts should show 3 recent posts of user' do
-    first_user = User.create(id: Random.rand(300..1000),name: 'Tom', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Mexico.',
+    first_user = User.create(id: Random.rand(300..1000), name: 'Tom',
+                             photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Mexico.',
                              postscounter: 1)
     Post.create(author: first_user, title: 'Hello World', text: 'This is my first post', commentscounter: 0,
                 likescounter: 0)
