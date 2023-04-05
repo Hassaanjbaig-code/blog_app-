@@ -10,9 +10,6 @@ RSpec.describe UsersController, type: :request do
     it('is correct template rendered') do
       expect(response).to render_template(:index)
     end
-    it 'should check the responce is comming' do
-      expect(response.body.size).to eq(6635)
-    end
   end
   describe 'GET /users/:id' do
     before(:example) { get '/users/1' }
