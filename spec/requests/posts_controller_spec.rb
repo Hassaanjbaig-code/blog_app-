@@ -12,7 +12,6 @@ RSpec.describe PostsController, type: :request do
     end
   end
   describe 'GET /posts/:id' do
-    # before(:example) { get '/users/:users_id/posts/1' }
     before do
       @user = User.create(name: 'Raihan', photo: 'https://unsplash.com/photos/F_-0BxGuVvo',
                           bio: 'Teacher from Bangla.', postscounter: 1,
