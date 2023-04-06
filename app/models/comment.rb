@@ -3,9 +3,7 @@ class Comment < ApplicationRecord
   belongs_to :post
   after_save :update_the_comment_counter
 
-  private
-
   def update_the_comment_counter
-    post.update(commentscounter: Post.where(id: post.id).count)
+    Post.update(commentscounter: post.comments.count)
   end
 end

@@ -1,3 +1,7 @@
 <h1>Post of the user</h1>
 
 <%= render "shared/user", user: @user %>
+
+<%= @post.each do |post| %>
+    <%= render "shared/post",  post: post %>
+<% end %>
