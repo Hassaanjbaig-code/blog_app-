@@ -1,20 +1,7 @@
 <ul>
-<% @users.each do |item| %>
-        <a href="\users\<%= item.id %>">
-    <li>
-        <img src="https://images.unsplash.com/photo-1611003228941-98852ba62227?ixlib=rb-4.0.3&ixid=MnwxM[…]8MHxzZWFyY2h8Mnx8YmFieSUyMGRvZ3xlbnwwfHwwfHw%3D&w=1000&q=80"
-        width="30">
-       <p>
-           <%= item.name %>
-       </p>
-         <h4>
-              <%= if item.postscounter == nil
-                "No posts"
-                else
-                item.postscounter
-              end %>
-        </h4>
+<% @users.each do |user| %>
+        <a href="\users\<%= user.id %>">
+         <%= render "shared/user", user: user %>
        </a>
-    </li>
 <% end %>
 </ul>

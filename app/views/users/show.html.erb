@@ -1,1 +1,12 @@
 <h1>Profile detail</h1>
+
+<%= render "shared/user", user: @user %>
+
+    <p><%= @user.bio %><p>
+<%= @user.recent_posts.each do |post| %>
+   <%= render "shared/post",  post: post %>
+<% end %>
+
+<a href=<%="/users/#{@user.id}/posts" %>>
+See All Posts
+</a>
