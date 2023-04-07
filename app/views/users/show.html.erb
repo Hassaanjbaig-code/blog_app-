@@ -1,12 +1,18 @@
-<h1>Profile detail</h1>
-
+<div class="Profile_detail">
 <%= render "shared/user", user: @user %>
-
+    <div>
+    <h3>Bio</h3>
     <p><%= @user.bio %><p>
-<% @user.recent_posts.each do |post| %>
+    </div>
+<% @user.recent_posts.each_with_index do |post, index| %>
+    <div class="Post">
+    <h3>Post # <%= index + 1 %></h3>
+   <h3><%= post.text.slice(0..40) %></h3>
    <%= render "shared/post",  post: post %>
+    </div>
 <% end %>
 
 <a href=<%="/users/#{@user.id}/posts" %>>
 See All Posts
 </a>
+</div>

@@ -1,6 +1,6 @@
 <ul>
 <% @users.each do |user| %>
-        <a href="\users\<%= user.id %>">
+        <a href="\users\<%= user.id %>" class = "link_setup">
          <%= render "shared/user", user: user %>
        </a>
 <% end %>

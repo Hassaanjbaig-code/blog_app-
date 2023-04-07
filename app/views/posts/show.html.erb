@@ -1,12 +1,12 @@
-<h1>Show the detail of the post</h1>
-
 <h2>Post <%= @post.id%> by <%= @user.name %></h2>
 <%= render "shared/post",  post: @post %>
-<p><%= @post.text %></p>
-<div>
+<p><%= @post.text.slice(0..120) %></p>
+<div class="main_comment">
     <h2>Comments</h2>
     <% @comments.each do |comment| %>
-        <span> <%= comment.author.name %></span> 
-        <span> <%= comment.text %> </span>
+       <div class="comment">
+        <h6> <%= comment.author.name %> </h6>
+        <p> <%= comment.text %> </p>
+        </div>
     <% end %>  
 </div>
