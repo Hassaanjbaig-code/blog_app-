@@ -40,11 +40,12 @@
 }
 
 .Profile_detail {
-    display: flex;
-    flex-direction: column;
-    width: 53%;
-    margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  width: 53%;
+  margin-top: 12px;
 }
+
 .counter_l_c {
   width: 100%;
   display: flex;
