@@ -1,11 +1,13 @@
  <p><%= post.text%><p>
-    <h4> <%= if post.likescounter == nil
+    <h4>Number of likes: 
+     <%= if post.likescounter == nil
                 "No Likes"
                 else
                 post.likescounter
               end %>
     </h4>
-    <h4><%= if post.commentscounter == nil
+    <h4> Number of comments: 
+    <%= if post.commentscounter == nil
                 "No Comment"
                 else
                 post.commentscounter
