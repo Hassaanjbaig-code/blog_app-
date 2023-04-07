@@ -1,1 +1,21 @@
-<h1>Post of the user</h1>
+<%= render "shared/user", user: @user %>
+
+<div>
+    <% @user.recent_posts.each_with_index do 
+    |post, index| %>
+        <h2>Post #<%= index + 1 %></h2>
+         <a href=<%= "/users/#{@user.id}/posts/#{post.id}"%> class="post_next_page" >
+            <p class="Post_text" ><%= post.text %><p>
+         </a>
+       <%= render "shared/post",  post: post %>
+        <div class="main_comment">
+         <h2>Comments</h2>
+       <% post.recent_comments.each do |comment| %>
+       <div class="comment">
+        <h6> <%= comment.author.name %> </h6>
+        <p> <%= comment.text %> </p>
+        </div>
+       <% end %>
+       </div>
+    <% end %>
+</div>

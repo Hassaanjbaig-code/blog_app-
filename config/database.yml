@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: app_blog
+  database: app_blog_working
   user: postgres
   password: 1234
   port: 5432

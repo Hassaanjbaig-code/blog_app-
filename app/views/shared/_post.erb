@@ -1,0 +1,16 @@
+ <div class="counter_l_c">
+    <h4>likes: 
+     <%= if post.likescounter == nil
+                "No Likes"
+                else
+                post.likescounter
+              end %>
+    </h4>
+    <h4> comments: 
+    <%= if post.commentscounter == nil
+                "No Comment"
+                else
+                post.commentscounter
+              end %>
+</h4>
+</div>

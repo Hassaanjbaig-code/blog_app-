@@ -14,6 +14,6 @@ class Post < ApplicationRecord
   private
 
   def update_author_posts_counter
-    author.update(postscounter: Post.where(author_id: author.id).count)
+    author.update(postscounter: author.posts.count)
   end
 end
