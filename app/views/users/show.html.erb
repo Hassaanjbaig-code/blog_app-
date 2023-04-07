@@ -3,7 +3,7 @@
 <%= render "shared/user", user: @user %>
 
     <p><%= @user.bio %><p>
-<%= @user.recent_posts.each do |post| %>
+<% @user.recent_posts.each do |post| %>
    <%= render "shared/post",  post: post %>
 <% end %>
 
