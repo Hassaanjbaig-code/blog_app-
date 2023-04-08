@@ -1,0 +1,12 @@
+<h1>Form </h1>
+<%= form_with model: [@user, @post] do |form| %>
+    <%= form.label :title %>
+    <%= form.text_field :title, placeholder: "Add a title " %>
+    <br>
+    <br>
+    <%= form.label :text %>
+    <%= form.text_field :text, placeholder: "Add a text" %>
+    <br>
+    <br>
+    <%= form.submit %>
+<% end %> 
