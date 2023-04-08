@@ -1,6 +1,9 @@
 <h2>Post <%= @post.id%> by <%= @user.name %></h2>
 <%= render "shared/post",  post: @post %>
 <p><%= @post.text.slice(0..120) %></p>
+<%= form_with model: @like, url:  user_post_likes_path(@user, @post) do |form|%>
+    <%= form.submit '👍', class: 'submit' %>
+<%end%>
 <div class="main_comment">
     <h2>Comments</h2>
     <% @comments.each do |comment| %>

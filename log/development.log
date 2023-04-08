@@ -9848,3 +9848,420 @@ Processing by PostsController#new as HTML
 Completed 200 OK in 81ms (Views: 68.8ms | ActiveRecord: 0.4ms | Allocations: 6710)
 
 
+Started GET "/users/2/posts/new" for ::1 at 2023-04-08 13:11:22 +0500
+Processing by PostsController#new as HTML
+  Parameters: {"user_id"=>"2"}
+  [1m[36mUser Load (3.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (Duration: 8.2ms | Allocations: 1347)
+  Rendered layout layouts/application.html.erb (Duration: 24.7ms | Allocations: 3937)
+Completed 200 OK in 218ms (Views: 37.1ms | ActiveRecord: 22.5ms | Allocations: 8204)
+
+
+Started GET "/users/1/posts" for ::1 at 2023-04-08 13:13:39 +0500
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  Rendered shared/_user.erb (Duration: 2.5ms | Allocations: 172)
+  [1m[36mPost Load (4.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."created_at" DESC LIMIT $2[0m  [["author_id", 1], ["LIMIT", 3]]
+  ↳ app/views/posts/index.html.erb:4:in `each_with_index'
+  Rendered shared/_post.erb (Duration: 2.1ms | Allocations: 176)
+  [1m[36mComment Load (5.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC LIMIT $2[0m  [["post_id", 6], ["LIMIT", 5]]
+  ↳ app/views/posts/index.html.erb:13
+  Rendered shared/_post.erb (Duration: 0.1ms | Allocations: 14)
+  [1m[36mComment Load (1.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC LIMIT $2[0m  [["post_id", 3], ["LIMIT", 5]]
+  ↳ app/views/posts/index.html.erb:13
+  Rendered shared/_post.erb (Duration: 0.1ms | Allocations: 14)
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC LIMIT $2[0m  [["post_id", 2], ["LIMIT", 5]]
+  ↳ app/views/posts/index.html.erb:13
+  Rendered posts/index.html.erb within layouts/application (Duration: 63.5ms | Allocations: 4238)
+  Rendered layout layouts/application.html.erb (Duration: 88.5ms | Allocations: 7000)
+Completed 200 OK in 123ms (Views: 95.6ms | ActiveRecord: 12.5ms | Allocations: 8293)
+
+
+Started GET "/" for ::1 at 2023-04-08 13:13:41 +0500
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:2
+  Rendered shared/_user.erb (Duration: 0.2ms | Allocations: 15)
+  Rendered shared/_user.erb (Duration: 0.8ms | Allocations: 12)
+  Rendered shared/_user.erb (Duration: 0.1ms | Allocations: 12)
+  Rendered shared/_user.erb (Duration: 0.1ms | Allocations: 12)
+  Rendered shared/_user.erb (Duration: 0.1ms | Allocations: 12)
+  Rendered users/index.html.erb within layouts/application (Duration: 12.8ms | Allocations: 1296)
+  Rendered layout layouts/application.html.erb (Duration: 33.5ms | Allocations: 3846)
+Completed 200 OK in 53ms (Views: 45.4ms | ActiveRecord: 0.5ms | Allocations: 4434)
+
+
+Started GET "/users/2" for ::1 at 2023-04-08 13:13:43 +0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered shared/_user.erb (Duration: 0.1ms | Allocations: 13)
+  [1m[36mPost Load (1.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."created_at" DESC LIMIT $2[0m  [["author_id", 2], ["LIMIT", 3]]
+  ↳ app/views/users/show.html.erb:7:in `each_with_index'
+  Rendered shared/_post.erb (Duration: 0.1ms | Allocations: 15)
+  Rendered shared/_post.erb (Duration: 0.1ms | Allocations: 14)
+  Rendered users/show.html.erb within layouts/application (Duration: 18.8ms | Allocations: 1336)
+  Rendered layout layouts/application.html.erb (Duration: 41.2ms | Allocations: 3808)
+Completed 200 OK in 68ms (Views: 43.7ms | ActiveRecord: 1.7ms | Allocations: 4673)
+
+
+Started GET "/users/2/posts" for ::1 at 2023-04-08 13:13:47 +0500
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  Rendered shared/_user.erb (Duration: 0.1ms | Allocations: 13)
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."created_at" DESC LIMIT $2[0m  [["author_id", 2], ["LIMIT", 3]]
+  ↳ app/views/posts/index.html.erb:4:in `each_with_index'
+  Rendered shared/_post.erb (Duration: 0.1ms | Allocations: 14)
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC LIMIT $2[0m  [["post_id", 5], ["LIMIT", 5]]
+  ↳ app/views/posts/index.html.erb:13
+  Rendered shared/_post.erb (Duration: 0.1ms | Allocations: 14)
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC LIMIT $2[0m  [["post_id", 4], ["LIMIT", 5]]
+  ↳ app/views/posts/index.html.erb:13
+  Rendered posts/index.html.erb within layouts/application (Duration: 19.2ms | Allocations: 2592)
+  Rendered layout layouts/application.html.erb (Duration: 32.2ms | Allocations: 5073)
+Completed 200 OK in 43ms (Views: 32.2ms | ActiveRecord: 2.3ms | Allocations: 5897)
+
+
+Started GET "/users/2/posts/4" for ::1 at 2023-04-08 13:13:57 +0500
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"2", "id"=>"4"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:8:in `show'
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  Rendered shared/_post.erb (Duration: 0.2ms | Allocations: 15)
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 4]]
+  ↳ app/views/posts/show.html.erb:6
+  Rendered posts/show.html.erb within layouts/application (Duration: 14.6ms | Allocations: 1046)
+  Rendered layout layouts/application.html.erb (Duration: 38.3ms | Allocations: 3520)
+Completed 200 OK in 61ms (Views: 40.9ms | ActiveRecord: 1.6ms | Allocations: 5066)
+
+
+Started GET "/users/2/posts/4/comments/new" for ::1 at 2023-04-08 13:13:59 +0500
+  
+ActionController::RoutingError (uninitialized constant CommentsController):
+  
+Started GET "/users/2/posts/4/comments/new" for ::1 at 2023-04-08 13:15:51 +0500
+  
+ActionController::RoutingError (uninitialized constant CommentsController):
+  
+Started GET "/users/2/posts/4/comments/new" for ::1 at 2023-04-08 13:17:58 +0500
+  
+ActionController::RoutingError (uninitialized constant CommentsController):
+  
+Started GET "/users/2/posts/4/comments/new" for ::1 at 2023-04-08 13:18:00 +0500
+  
+ActionController::RoutingError (uninitialized constant CommentsController):
+  
+Started GET "/users/2/posts/4/comments/new" for ::1 at 2023-04-08 13:18:01 +0500
+  
+ActionController::RoutingError (uninitialized constant CommentsController):
+  
+Started GET "/users/2/posts/4/comments/new" for ::1 at 2023-04-08 13:19:03 +0500
+  
+ActionController::RoutingError (uninitialized constant CommentsController):
+  
+Started GET "/users/2/posts/4/comments/new" for ::1 at 2023-04-08 13:23:16 +0500
+Processing by CommentsController#new as HTML
+  Parameters: {"user_id"=>"2", "post_id"=>"4"}
+  Rendering layout layouts/application.html.erb
+  Rendering comments/new.html.erb within layouts/application
+  Rendered comments/new.html.erb within layouts/application (Duration: 3.9ms | Allocations: 1189)
+  Rendered layout layouts/application.html.erb (Duration: 15.5ms | Allocations: 1271)
+Completed 500 Internal Server Error in 190ms (ActiveRecord: 72.6ms | Allocations: 5812)
+
+
+  
+ActionView::Template::Error (undefined method `comments_path' for #<ActionView::Base:0x0000000001e780>):
+    1: <h2>Form for comment </h2>
+    2: 
+    3: <%= form_with model: [@user, @post, @comment] do |comments| %>
+    4:     <%= comments.label :text %>
+    5:     <%= comments.text_field :text, placeholder: "Add a text" %>
+    6:     <br>
+  
+app/views/comments/new.html.erb:3
+Started GET "/users/2/posts/4/comments/new" for ::1 at 2023-04-08 13:23:42 +0500
+Processing by CommentsController#new as HTML
+  Parameters: {"user_id"=>"2", "post_id"=>"4"}
+  Rendering layout layouts/application.html.erb
+  Rendering comments/new.html.erb within layouts/application
+  Rendered comments/new.html.erb within layouts/application (Duration: 5.5ms | Allocations: 1214)
+  Rendered layout layouts/application.html.erb (Duration: 7.5ms | Allocations: 1296)
+Completed 500 Internal Server Error in 33ms (ActiveRecord: 0.0ms | Allocations: 2036)
+
+
+  
+ActionView::Template::Error (undefined method `comments_path' for #<ActionView::Base:0x0000000001eb18>):
+    1: <h2>Form for comment </h2>
+    2: 
+    3: <%= form_with model: [@comment] do |comments| %>
+    4:     <%= comments.label :text %>
+    5:     <%= comments.text_field :text, placeholder: "Add a text" %>
+    6:     <br>
+  
+app/views/comments/new.html.erb:3
+Started GET "/users/2/posts/4/comments/new" for ::1 at 2023-04-08 13:24:29 +0500
+Processing by CommentsController#new as HTML
+  Parameters: {"user_id"=>"2", "post_id"=>"4"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_user'
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:4:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering comments/new.html.erb within layouts/application
+  Rendered comments/new.html.erb within layouts/application (Duration: 6.9ms | Allocations: 1175)
+  Rendered layout layouts/application.html.erb (Duration: 76.7ms | Allocations: 15815)
+Completed 200 OK in 183ms (Views: 87.0ms | ActiveRecord: 20.4ms | Allocations: 28817)
+
+
+Started POST "/users/2/posts/4/comments" for ::1 at 2023-04-08 13:24:56 +0500
+Processing by CommentsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "comment"=>{"text"=>"Nice work done by you"}, "commit"=>"Create Comment", "user_id"=>"2", "post_id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_user'
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:10:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:16:in `create'
+  [1m[36mComment Create (5.3ms)[0m  [1m[32mINSERT INTO "comments" ("text", "created_at", "updated_at", "author_id", "post_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["text", "Nice work done by you"], ["created_at", "2023-04-08 08:24:56.439953"], ["updated_at", "2023-04-08 08:24:56.439953"], ["author_id", 2], ["post_id", 4]]
+  ↳ app/controllers/comments_controller.rb:16:in `create'
+  [1m[36mComment Count (2.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 4]]
+  ↳ app/models/comment.rb:7:in `comments_counter_update'
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/models/comment.rb:7:in `comments_counter_update'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/comment.rb:7:in `comments_counter_update'
+  [1m[36mPost Update (1.3ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = $1, "commentscounter" = $2 WHERE "posts"."id" = $3[0m  [["updated_at", "2023-04-08 08:24:56.475392"], ["commentscounter", 1], ["id", 1]]
+  ↳ app/models/comment.rb:7:in `comments_counter_update'
+  [1m[36mPost Count (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/models/post.rb:17:in `update_author_posts_counter'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/comment.rb:7:in `comments_counter_update'
+  [1m[36mPost Update (0.8ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = $1, "commentscounter" = $2 WHERE "posts"."id" = $3[0m  [["updated_at", "2023-04-08 08:24:56.497373"], ["commentscounter", 1], ["id", 2]]
+  ↳ app/models/comment.rb:7:in `comments_counter_update'
+  [1m[36mPost Count (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/models/post.rb:17:in `update_author_posts_counter'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/comment.rb:7:in `comments_counter_update'
+  [1m[36mPost Update (0.6ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = $1, "commentscounter" = $2 WHERE "posts"."id" = $3[0m  [["updated_at", "2023-04-08 08:24:56.514513"], ["commentscounter", 1], ["id", 3]]
+  ↳ app/models/comment.rb:7:in `comments_counter_update'
+  [1m[36mPost Count (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/models/post.rb:17:in `update_author_posts_counter'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/comment.rb:7:in `comments_counter_update'
+  [1m[36mPost Update (0.7ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = $1, "commentscounter" = $2 WHERE "posts"."id" = $3[0m  [["updated_at", "2023-04-08 08:24:56.529411"], ["commentscounter", 1], ["id", 4]]
+  ↳ app/models/comment.rb:7:in `comments_counter_update'
+  [1m[36mPost Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 2]]
+  ↳ app/models/post.rb:17:in `update_author_posts_counter'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/comment.rb:7:in `comments_counter_update'
+  [1m[36mPost Update (1.0ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = $1, "commentscounter" = $2 WHERE "posts"."id" = $3[0m  [["updated_at", "2023-04-08 08:24:56.545774"], ["commentscounter", 1], ["id", 5]]
+  ↳ app/models/comment.rb:7:in `comments_counter_update'
+  [1m[36mPost Count (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 2]]
+  ↳ app/models/post.rb:17:in `update_author_posts_counter'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/comment.rb:7:in `comments_counter_update'
+  [1m[36mPost Update (1.3ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = $1, "commentscounter" = $2 WHERE "posts"."id" = $3[0m  [["updated_at", "2023-04-08 08:24:56.566476"], ["commentscounter", 1], ["id", 6]]
+  ↳ app/models/comment.rb:7:in `comments_counter_update'
+  [1m[36mPost Count (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/models/post.rb:17:in `update_author_posts_counter'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/comment.rb:7:in `comments_counter_update'
+  [1m[36mPost Update (0.9ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = $1, "commentscounter" = $2 WHERE "posts"."id" = $3[0m  [["updated_at", "2023-04-08 08:24:56.586371"], ["commentscounter", 1], ["id", 7]]
+  ↳ app/models/comment.rb:7:in `comments_counter_update'
+  [1m[36mPost Count (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 4]]
+  ↳ app/models/post.rb:17:in `update_author_posts_counter'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/comment.rb:7:in `comments_counter_update'
+  [1m[36mPost Update (0.6ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = $1, "commentscounter" = $2 WHERE "posts"."id" = $3[0m  [["updated_at", "2023-04-08 08:24:56.615238"], ["commentscounter", 1], ["id", 8]]
+  ↳ app/models/comment.rb:7:in `comments_counter_update'
+  [1m[36mPost Count (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 3]]
+  ↳ app/models/post.rb:17:in `update_author_posts_counter'
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:16:in `create'
+Redirected to http://localhost:3000/users/2/posts/4.3
+Completed 302 Found in 226ms (ActiveRecord: 28.8ms | Allocations: 31894)
+
+
+Started GET "/users/2/posts/4.3" for ::1 at 2023-04-08 13:24:56 +0500
+Processing by PostsController#show as */*
+  Parameters: {"user_id"=>"2", "id"=>"4"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:8:in `show'
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  Rendered shared/_post.erb (Duration: 4.4ms | Allocations: 179)
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 4]]
+  ↳ app/views/posts/show.html.erb:6
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:8
+  Rendered posts/show.html.erb within layouts/application (Duration: 94.0ms | Allocations: 2809)
+  Rendered layout layouts/application.html.erb (Duration: 174.9ms | Allocations: 5391)
+Completed 200 OK in 216ms (Views: 197.4ms | ActiveRecord: 2.4ms | Allocations: 7351)
+
+
+Started GET "/users/2/posts/4.3" for ::1 at 2023-04-08 13:24:57 +0500
+Processing by PostsController#show as */*
+  Parameters: {"user_id"=>"2", "id"=>"4"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:8:in `show'
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  Rendered shared/_post.erb (Duration: 0.2ms | Allocations: 14)
+  [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 4]]
+  ↳ app/views/posts/show.html.erb:6
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:8
+  Rendered posts/show.html.erb within layouts/application (Duration: 13.4ms | Allocations: 1482)
+  Rendered layout layouts/application.html.erb (Duration: 33.9ms | Allocations: 3938)
+Completed 200 OK in 57ms (Views: 34.0ms | ActiveRecord: 3.5ms | Allocations: 5425)
+
+
+Started GET "/users/2/posts/4/comments/new" for ::1 at 2023-04-08 13:25:03 +0500
+Processing by CommentsController#new as HTML
+  Parameters: {"user_id"=>"2", "post_id"=>"4"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_user'
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:4:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering comments/new.html.erb within layouts/application
+  Rendered comments/new.html.erb within layouts/application (Duration: 3.4ms | Allocations: 793)
+  Rendered layout layouts/application.html.erb (Duration: 32.4ms | Allocations: 3090)
+Completed 200 OK in 52ms (Views: 34.7ms | ActiveRecord: 1.3ms | Allocations: 4438)
+
+
+Started POST "/users/2/posts/4/comments" for ::1 at 2023-04-08 13:25:12 +0500
+Processing by CommentsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "comment"=>{"text"=>"Good job"}, "commit"=>"Create Comment", "user_id"=>"2", "post_id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_user'
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:10:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:16:in `create'
+  [1m[36mComment Create (1.5ms)[0m  [1m[32mINSERT INTO "comments" ("text", "created_at", "updated_at", "author_id", "post_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["text", "Good job"], ["created_at", "2023-04-08 08:25:13.169016"], ["updated_at", "2023-04-08 08:25:13.169016"], ["author_id", 2], ["post_id", 4]]
+  ↳ app/controllers/comments_controller.rb:16:in `create'
+  [1m[36mComment Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 4]]
+  ↳ app/models/comment.rb:7:in `comments_counter_update'
+  [1m[36mPost Load (2.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/models/comment.rb:7:in `comments_counter_update'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/comment.rb:7:in `comments_counter_update'
+  [1m[36mPost Update (0.8ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = $1, "commentscounter" = $2 WHERE "posts"."id" = $3[0m  [["updated_at", "2023-04-08 08:25:13.201427"], ["commentscounter", 2], ["id", 1]]
+  ↳ app/models/comment.rb:7:in `comments_counter_update'
+  [1m[36mPost Count (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/models/post.rb:17:in `update_author_posts_counter'
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/comment.rb:7:in `comments_counter_update'
+  [1m[36mPost Update (0.9ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = $1, "commentscounter" = $2 WHERE "posts"."id" = $3[0m  [["updated_at", "2023-04-08 08:25:13.227200"], ["commentscounter", 2], ["id", 2]]
+  ↳ app/models/comment.rb:7:in `comments_counter_update'
+  [1m[36mPost Count (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/models/post.rb:17:in `update_author_posts_counter'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/comment.rb:7:in `comments_counter_update'
+  [1m[36mPost Update (0.8ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = $1, "commentscounter" = $2 WHERE "posts"."id" = $3[0m  [["updated_at", "2023-04-08 08:25:13.265432"], ["commentscounter", 2], ["id", 3]]
+  ↳ app/models/comment.rb:7:in `comments_counter_update'
+  [1m[36mPost Count (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/models/post.rb:17:in `update_author_posts_counter'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/comment.rb:7:in `comments_counter_update'
+  [1m[36mPost Update (0.8ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = $1, "commentscounter" = $2 WHERE "posts"."id" = $3[0m  [["updated_at", "2023-04-08 08:25:13.291213"], ["commentscounter", 2], ["id", 4]]
+  ↳ app/models/comment.rb:7:in `comments_counter_update'
+  [1m[36mPost Count (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 2]]
+  ↳ app/models/post.rb:17:in `update_author_posts_counter'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/comment.rb:7:in `comments_counter_update'
+  [1m[36mPost Update (1.0ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = $1, "commentscounter" = $2 WHERE "posts"."id" = $3[0m  [["updated_at", "2023-04-08 08:25:13.312213"], ["commentscounter", 2], ["id", 5]]
+  ↳ app/models/comment.rb:7:in `comments_counter_update'
+  [1m[36mPost Count (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 2]]
+  ↳ app/models/post.rb:17:in `update_author_posts_counter'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/comment.rb:7:in `comments_counter_update'
+  [1m[36mPost Update (0.9ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = $1, "commentscounter" = $2 WHERE "posts"."id" = $3[0m  [["updated_at", "2023-04-08 08:25:13.356678"], ["commentscounter", 2], ["id", 6]]
+  ↳ app/models/comment.rb:7:in `comments_counter_update'
+  [1m[36mPost Count (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/models/post.rb:17:in `update_author_posts_counter'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/comment.rb:7:in `comments_counter_update'
+  [1m[36mPost Update (1.1ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = $1, "commentscounter" = $2 WHERE "posts"."id" = $3[0m  [["updated_at", "2023-04-08 08:25:13.376856"], ["commentscounter", 2], ["id", 7]]
+  ↳ app/models/comment.rb:7:in `comments_counter_update'
+  [1m[36mPost Count (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 4]]
+  ↳ app/models/post.rb:17:in `update_author_posts_counter'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/comment.rb:7:in `comments_counter_update'
+  [1m[36mPost Update (1.0ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = $1, "commentscounter" = $2 WHERE "posts"."id" = $3[0m  [["updated_at", "2023-04-08 08:25:13.407524"], ["commentscounter", 2], ["id", 8]]
+  ↳ app/models/comment.rb:7:in `comments_counter_update'
+  [1m[36mPost Count (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 3]]
+  ↳ app/models/post.rb:17:in `update_author_posts_counter'
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:16:in `create'
+Redirected to http://localhost:3000/users/2/posts/4.4
+Completed 302 Found in 281ms (ActiveRecord: 28.9ms | Allocations: 25966)
+
+
+Started GET "/users/2/posts/4.4" for ::1 at 2023-04-08 13:25:13 +0500
+Processing by PostsController#show as */*
+  Parameters: {"user_id"=>"2", "id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:8:in `show'
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  Rendered shared/_post.erb (Duration: 0.1ms | Allocations: 14)
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 4]]
+  ↳ app/views/posts/show.html.erb:6
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:8
+  Rendered posts/show.html.erb within layouts/application (Duration: 18.3ms | Allocations: 2133)
+  Rendered layout layouts/application.html.erb (Duration: 80.1ms | Allocations: 4623)
+Completed 200 OK in 129ms (Views: 101.0ms | ActiveRecord: 3.1ms | Allocations: 6110)
+
+
+Started GET "/users/2/posts/4.4" for ::1 at 2023-04-08 13:25:14 +0500
+Processing by PostsController#show as */*
+  Parameters: {"user_id"=>"2", "id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:8:in `show'
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  Rendered shared/_post.erb (Duration: 0.1ms | Allocations: 14)
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC[0m  [["post_id", 4]]
+  ↳ app/views/posts/show.html.erb:6
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:8
+  Rendered posts/show.html.erb within layouts/application (Duration: 17.6ms | Allocations: 2124)
+  Rendered layout layouts/application.html.erb (Duration: 83.8ms | Allocations: 4610)
+Completed 200 OK in 105ms (Views: 87.0ms | ActiveRecord: 2.2ms | Allocations: 6097)
+
+
