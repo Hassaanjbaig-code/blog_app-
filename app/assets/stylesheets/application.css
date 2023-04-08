@@ -100,8 +100,8 @@
 }
 
 .form {
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/opacity/see-through */
   color: white;
   font-weight: bold;
   border: 3px solid #f1f1f1;
@@ -157,8 +157,8 @@
 }
 
 .form-submit:hover {
- background-color: #f1f1f138;
- border-radius: 12px;
+  background-color: #f1f1f138;
+  border-radius: 12px;
 }
 
 .btn {
