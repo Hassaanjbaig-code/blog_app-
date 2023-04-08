@@ -15,10 +15,10 @@ class CommentsController < ApplicationController
     )
     if @comment.save
       redirect_to user_post_path(@user, @post, @comment),
-      notice: 'Comment was successfully created.'
+                  notice: 'Comment was successfully created.'
     else
       render :new
       flash[:alert] = 'Comment was not created.'
     end
-end
+  end
 end
