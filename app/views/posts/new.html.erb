@@ -1,4 +1,6 @@
-<h1>Form </h1>
+<div class="form-background"> </div>
+    <div class="form"></div>
+<h2>Form for post </h2>
 <%= form_with model: [@user, @post] do |form| %>
     <%= form.label :title %>
     <%= form.text_field :title, placeholder: "Add a title " %>
@@ -9,4 +11,5 @@
     <br>
     <br>
     <%= form.submit %>
-<% end %> 
+<% end %>
+</div> 

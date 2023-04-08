@@ -9,4 +9,8 @@
         <p> <%= comment.text %> </p>
         </div>
     <% end %>  
+<div>
+    <%= link_to "Add Comment", new_user_post_comment_path(@user, @post), 
+    class: "comments-btn" %>
+</div>
 </div>
