@@ -12,12 +12,12 @@ class PostsController < ApplicationController
 
   def new
     @user = current_user(params[:user_id])
-    @post = Post.new
+    @post = Post.create
   end
 
   def create
     @user = current_user(params[:user_id])
-    @post = Post.new(
+    @post = Post.create(
       author: @user,
       title: params[:post][:title],
       text: params[:post][:text]
