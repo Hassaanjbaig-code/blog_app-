@@ -11262,3 +11262,368 @@ Completed 200 OK in 23ms (Views: 9.0ms | ActiveRecord: 2.3ms | Allocations: 2744
   [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "postscounter" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["postscounter", "4"], ["updated_at", "2023-04-12 08:14:36.186450"], ["id", 208]]
   [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
   [1m[36mTRANSACTION (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (2.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (8.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "postscounter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Raihan"], ["photo", "https://images.unsplash.com/photo-1611003228941-98852ba62227?ixlib=rb-4.0.3&ixid=MnwxM[%E2%80%A6]8MHxzZWFyY2h8Mnx8YmFieSUyMGRvZ3xlbnwwfHwwfHw%3D&w=1000&q=80"], ["bio", "Teacher from Bangla."], ["postscounter", "1"], ["created_at", "2023-03-30 12:47:48.768257"], ["updated_at", "2023-03-30 12:47:48.768257"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (14.8ms)[0m  [1m[32mINSERT INTO "posts" ("title", "text", "likescounter", "created_at", "updated_at", "author_id", "commentscounter") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Hello World"], ["text", "This is my first @post"], ["likescounter", 0], ["created_at", "2023-04-12 08:31:07.987038"], ["updated_at", "2023-04-12 08:31:07.987038"], ["author_id", 209], ["commentscounter", 0]]
+  [1m[36mPost Count (8.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 209]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users" for 127.0.0.1 at 2023-04-12 13:31:15 +0500
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (1.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" IN ($1, $2, $3)[0m  [["author_id", 209], ["author_id", 32], ["author_id", 33]]
+  Rendered shared/_user.erb (Duration: 2.6ms | Allocations: 187)
+  Rendered shared/_user.erb (Duration: 0.2ms | Allocations: 9)
+  Rendered shared/_user.erb (Duration: 0.1ms | Allocations: 9)
+  Rendered users/index.html.erb within layouts/application (Duration: 51.7ms | Allocations: 2931)
+  Rendered layout layouts/application.html.erb (Duration: 394.2ms | Allocations: 38262)
+Completed 200 OK in 499ms (Views: 421.2ms | ActiveRecord: 2.4ms | Allocations: 41880)
+Started GET "/assets/application-653dc6881f120e1813084774bf082382ac4472be03b59bfbd91e9a1948753266.css" for 127.0.0.1 at 2023-04-12 13:31:16 +0500
+Started GET "/assets/es-module-shims.min-d89e73202ec09dede55fb74115af9c5f9f2bb965433de1c2446e1faa6dac2470.js" for 127.0.0.1 at 2023-04-12 13:31:16 +0500
+Started GET "/assets/application-37f365cbecf1fa2810a8303f4b6571676fa1f9c56c248528bc14ddb857531b95.js" for 127.0.0.1 at 2023-04-12 13:31:16 +0500
+Started GET "/assets/controllers/index-2db729dddcc5b979110e98de4b6720f83f91a123172e87281d5a58410fc43806.js" for 127.0.0.1 at 2023-04-12 13:31:16 +0500
+Started GET "/assets/turbo.min-f309baafa3ae5ad6ccee3e7362118b87678d792db8e8ab466c4fa284dd3a4700.js" for 127.0.0.1 at 2023-04-12 13:31:16 +0500
+Started GET "/assets/controllers/application-368d98631bccbf2349e0d4f8269afb3fe9625118341966de054759d96ea86c7e.js" for 127.0.0.1 at 2023-04-12 13:31:16 +0500
+Started GET "/assets/stimulus.min-d03cf1dff41d6c5698ec2c5d6a501615a7a33754dbeef8d1edd31c928d17c652.js" for 127.0.0.1 at 2023-04-12 13:31:16 +0500
+Started GET "/assets/stimulus-loading-1fc59770fb1654500044afd3f5f6d7d00800e5be36746d55b94a2963a7a228aa.js" for 127.0.0.1 at 2023-04-12 13:31:16 +0500
+Started GET "/assets/controllers/hello_controller-549135e8e7c683a538c3d6d517339ba470fcfb79d62f738a0a089ba41851a554.js" for 127.0.0.1 at 2023-04-12 13:31:17 +0500
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "postscounter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Raihan"], ["photo", "https://images.unsplash.com/photo-1611003228941-98852ba62227?ixlib=rb-4.0.3&ixid=MnwxM[%E2%80%A6]8MHxzZWFyY2h8Mnx8YmFieSUyMGRvZ3xlbnwwfHwwfHw%3D&w=1000&q=80"], ["bio", "Teacher from Bangla."], ["postscounter", "1"], ["created_at", "2023-03-30 12:47:48.768257"], ["updated_at", "2023-03-30 12:47:48.768257"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (1.2ms)[0m  [1m[32mINSERT INTO "posts" ("title", "text", "likescounter", "created_at", "updated_at", "author_id", "commentscounter") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Hello World"], ["text", "This is my first @post"], ["likescounter", 0], ["created_at", "2023-04-12 08:31:18.393226"], ["updated_at", "2023-04-12 08:31:18.393226"], ["author_id", 210], ["commentscounter", 0]]
+  [1m[36mPost Count (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 210]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users" for 127.0.0.1 at 2023-04-12 13:31:18 +0500
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" IN ($1, $2, $3)[0m  [["author_id", 210], ["author_id", 32], ["author_id", 33]]
+  Rendered shared/_user.erb (Duration: 0.1ms | Allocations: 10)
+  Rendered shared/_user.erb (Duration: 0.1ms | Allocations: 9)
+  Rendered shared/_user.erb (Duration: 0.1ms | Allocations: 9)
+  Rendered users/index.html.erb within layouts/application (Duration: 6.6ms | Allocations: 750)
+  Rendered layout layouts/application.html.erb (Duration: 13.0ms | Allocations: 2241)
+Completed 200 OK in 22ms (Views: 12.8ms | ActiveRecord: 1.7ms | Allocations: 2521)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "postscounter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Raihan"], ["photo", "https://images.unsplash.com/photo-1611003228941-98852ba62227?ixlib=rb-4.0.3&ixid=MnwxM[%E2%80%A6]8MHxzZWFyY2h8Mnx8YmFieSUyMGRvZ3xlbnwwfHwwfHw%3D&w=1000&q=80"], ["bio", "Teacher from Bangla."], ["postscounter", "1"], ["created_at", "2023-03-30 12:47:48.768257"], ["updated_at", "2023-03-30 12:47:48.768257"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (1.3ms)[0m  [1m[32mINSERT INTO "posts" ("title", "text", "likescounter", "created_at", "updated_at", "author_id", "commentscounter") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Hello World"], ["text", "This is my first @post"], ["likescounter", 0], ["created_at", "2023-04-12 08:31:19.575654"], ["updated_at", "2023-04-12 08:31:19.575654"], ["author_id", 211], ["commentscounter", 0]]
+  [1m[36mPost Count (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 211]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users" for 127.0.0.1 at 2023-04-12 13:31:19 +0500
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" IN ($1, $2, $3)[0m  [["author_id", 211], ["author_id", 32], ["author_id", 33]]
+  Rendered shared/_user.erb (Duration: 0.1ms | Allocations: 10)
+  Rendered shared/_user.erb (Duration: 0.1ms | Allocations: 9)
+  Rendered shared/_user.erb (Duration: 0.1ms | Allocations: 9)
+  Rendered users/index.html.erb within layouts/application (Duration: 6.8ms | Allocations: 754)
+  Rendered layout layouts/application.html.erb (Duration: 9.8ms | Allocations: 2246)
+Completed 200 OK in 19ms (Views: 10.3ms | ActiveRecord: 1.8ms | Allocations: 2519)
+Started GET "/users/211" for 127.0.0.1 at 2023-04-12 13:31:20 +0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"211"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 211], ["LIMIT", 1]]
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 211]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered shared/_user.erb (Duration: 0.1ms | Allocations: 10)
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."created_at" DESC LIMIT $2[0m  [["author_id", 211], ["LIMIT", 3]]
+  Rendered shared/_post.erb (Duration: 2.2ms | Allocations: 181)
+  Rendered users/show.html.erb within layouts/application (Duration: 12.6ms | Allocations: 1025)
+  Rendered layout layouts/application.html.erb (Duration: 16.8ms | Allocations: 2677)
+Completed 200 OK in 37ms (Views: 19.1ms | ActiveRecord: 2.6ms | Allocations: 4226)
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "postscounter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Raihan"], ["photo", "https://images.unsplash.com/photo-1611003228941-98852ba62227?ixlib=rb-4.0.3&ixid=MnwxM[%E2%80%A6]8MHxzZWFyY2h8Mnx8YmFieSUyMGRvZ3xlbnwwfHwwfHw%3D&w=1000&q=80"], ["bio", "Teacher from Bangla."], ["postscounter", "1"], ["created_at", "2023-03-30 12:47:48.768257"], ["updated_at", "2023-03-30 12:47:48.768257"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (1.1ms)[0m  [1m[32mINSERT INTO "posts" ("title", "text", "likescounter", "created_at", "updated_at", "author_id", "commentscounter") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Hello World"], ["text", "This is my first @post"], ["likescounter", 0], ["created_at", "2023-04-12 08:31:20.880080"], ["updated_at", "2023-04-12 08:31:20.880080"], ["author_id", 212], ["commentscounter", 0]]
+  [1m[36mPost Count (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 212]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."id" ASC LIMIT $2[0m  [["author_id", 212], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mComment Create (3.4ms)[0m  [1m[32mINSERT INTO "comments" ("text", "created_at", "updated_at", "author_id", "post_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["text", "This is my first comment"], ["created_at", "2023-04-12 08:31:20.943127"], ["updated_at", "2023-04-12 08:31:20.943127"], ["author_id", 212], ["post_id", 204]]
+  [1m[36mComment Count (3.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 204]]
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 212], ["LIMIT", 1]]
+  [1m[36mPost Update (1.5ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = $1, "commentscounter" = $2 WHERE "posts"."id" = $3[0m  [["updated_at", "2023-04-12 08:31:20.959842"], ["commentscounter", 1], ["id", 204]]
+  [1m[36mPost Count (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 212]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/212" for 127.0.0.1 at 2023-04-12 13:31:20 +0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"212"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 212], ["LIMIT", 1]]
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 212]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered shared/_user.erb (Duration: 0.1ms | Allocations: 10)
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."created_at" DESC LIMIT $2[0m  [["author_id", 212], ["LIMIT", 3]]
+  Rendered shared/_post.erb (Duration: 0.1ms | Allocations: 10)
+  Rendered users/show.html.erb within layouts/application (Duration: 3.1ms | Allocations: 442)
+  Rendered layout layouts/application.html.erb (Duration: 5.5ms | Allocations: 1927)
+Completed 200 OK in 16ms (Views: 5.8ms | ActiveRecord: 1.7ms | Allocations: 2762)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "postscounter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Raihan"], ["photo", "https://images.unsplash.com/photo-1611003228941-98852ba62227?ixlib=rb-4.0.3&ixid=MnwxM[%E2%80%A6]8MHxzZWFyY2h8Mnx8YmFieSUyMGRvZ3xlbnwwfHwwfHw%3D&w=1000&q=80"], ["bio", "Teacher from Bangla."], ["postscounter", "1"], ["created_at", "2023-03-30 12:47:48.768257"], ["updated_at", "2023-03-30 12:47:48.768257"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (1.1ms)[0m  [1m[32mINSERT INTO "posts" ("title", "text", "likescounter", "created_at", "updated_at", "author_id", "commentscounter") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Hello World"], ["text", "This is my first @post"], ["likescounter", 0], ["created_at", "2023-04-12 08:31:21.954515"], ["updated_at", "2023-04-12 08:31:21.954515"], ["author_id", 213], ["commentscounter", 0]]
+  [1m[36mPost Count (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 213]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."id" ASC LIMIT $2[0m  [["author_id", 213], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mComment Create (1.3ms)[0m  [1m[32mINSERT INTO "comments" ("text", "created_at", "updated_at", "author_id", "post_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["text", "This is my first comment"], ["created_at", "2023-04-12 08:31:21.967278"], ["updated_at", "2023-04-12 08:31:21.967278"], ["author_id", 213], ["post_id", 205]]
+  [1m[36mComment Count (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 205]]
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 213], ["LIMIT", 1]]
+  [1m[36mPost Update (1.1ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = $1, "commentscounter" = $2 WHERE "posts"."id" = $3[0m  [["updated_at", "2023-04-12 08:31:21.980760"], ["commentscounter", 1], ["id", 205]]
+  [1m[36mPost Count (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 213]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/213" for 127.0.0.1 at 2023-04-12 13:31:22 +0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"213"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 213], ["LIMIT", 1]]
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 213]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered shared/_user.erb (Duration: 0.1ms | Allocations: 10)
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."created_at" DESC LIMIT $2[0m  [["author_id", 213], ["LIMIT", 3]]
+  Rendered shared/_post.erb (Duration: 0.1ms | Allocations: 10)
+  Rendered users/show.html.erb within layouts/application (Duration: 3.7ms | Allocations: 442)
+  Rendered layout layouts/application.html.erb (Duration: 6.8ms | Allocations: 1925)
+Completed 200 OK in 19ms (Views: 7.2ms | ActiveRecord: 2.3ms | Allocations: 2745)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "postscounter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Raihan"], ["photo", "https://images.unsplash.com/photo-1611003228941-98852ba62227?ixlib=rb-4.0.3&ixid=MnwxM[%E2%80%A6]8MHxzZWFyY2h8Mnx8YmFieSUyMGRvZ3xlbnwwfHwwfHw%3D&w=1000&q=80"], ["bio", "Teacher from Bangla."], ["postscounter", "1"], ["created_at", "2023-03-30 12:47:48.768257"], ["updated_at", "2023-03-30 12:47:48.768257"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.8ms)[0m  [1m[32mINSERT INTO "posts" ("title", "text", "likescounter", "created_at", "updated_at", "author_id", "commentscounter") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Hello World"], ["text", "This is my first @post"], ["likescounter", 0], ["created_at", "2023-04-12 08:31:23.094994"], ["updated_at", "2023-04-12 08:31:23.094994"], ["author_id", 214], ["commentscounter", 0]]
+  [1m[36mPost Count (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 214]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."id" ASC LIMIT $2[0m  [["author_id", 214], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mComment Create (1.0ms)[0m  [1m[32mINSERT INTO "comments" ("text", "created_at", "updated_at", "author_id", "post_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["text", "This is my first comment"], ["created_at", "2023-04-12 08:31:23.105325"], ["updated_at", "2023-04-12 08:31:23.105325"], ["author_id", 214], ["post_id", 206]]
+  [1m[36mComment Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 206]]
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 214], ["LIMIT", 1]]
+  [1m[36mPost Update (0.9ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = $1, "commentscounter" = $2 WHERE "posts"."id" = $3[0m  [["updated_at", "2023-04-12 08:31:23.113630"], ["commentscounter", 1], ["id", 206]]
+  [1m[36mPost Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 214]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/214" for 127.0.0.1 at 2023-04-12 13:31:23 +0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"214"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 214], ["LIMIT", 1]]
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 214]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered shared/_user.erb (Duration: 0.1ms | Allocations: 10)
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."created_at" DESC LIMIT $2[0m  [["author_id", 214], ["LIMIT", 3]]
+  Rendered shared/_post.erb (Duration: 0.1ms | Allocations: 10)
+  Rendered users/show.html.erb within layouts/application (Duration: 3.5ms | Allocations: 442)
+  Rendered layout layouts/application.html.erb (Duration: 6.2ms | Allocations: 1925)
+Completed 200 OK in 16ms (Views: 6.6ms | ActiveRecord: 1.8ms | Allocations: 2745)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "postscounter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Raihan"], ["photo", "https://images.unsplash.com/photo-1611003228941-98852ba62227?ixlib=rb-4.0.3&ixid=MnwxM[%E2%80%A6]8MHxzZWFyY2h8Mnx8YmFieSUyMGRvZ3xlbnwwfHwwfHw%3D&w=1000&q=80"], ["bio", "Teacher from Bangla."], ["postscounter", "1"], ["created_at", "2023-03-30 12:47:48.768257"], ["updated_at", "2023-03-30 12:47:48.768257"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.9ms)[0m  [1m[32mINSERT INTO "posts" ("title", "text", "likescounter", "created_at", "updated_at", "author_id", "commentscounter") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Hello World"], ["text", "This is my first @post"], ["likescounter", 0], ["created_at", "2023-04-12 08:31:24.181403"], ["updated_at", "2023-04-12 08:31:24.181403"], ["author_id", 215], ["commentscounter", 0]]
+  [1m[36mPost Count (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 215]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."id" ASC LIMIT $2[0m  [["author_id", 215], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mComment Create (1.2ms)[0m  [1m[32mINSERT INTO "comments" ("text", "created_at", "updated_at", "author_id", "post_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["text", "This is my first comment"], ["created_at", "2023-04-12 08:31:24.192546"], ["updated_at", "2023-04-12 08:31:24.192546"], ["author_id", 215], ["post_id", 207]]
+  [1m[36mComment Count (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 207]]
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 215], ["LIMIT", 1]]
+  [1m[36mPost Update (0.8ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = $1, "commentscounter" = $2 WHERE "posts"."id" = $3[0m  [["updated_at", "2023-04-12 08:31:24.203296"], ["commentscounter", 1], ["id", 207]]
+  [1m[36mPost Count (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 215]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/215" for 127.0.0.1 at 2023-04-12 13:31:24 +0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"215"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 215], ["LIMIT", 1]]
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 215]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered shared/_user.erb (Duration: 0.2ms | Allocations: 10)
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."created_at" DESC LIMIT $2[0m  [["author_id", 215], ["LIMIT", 3]]
+  Rendered shared/_post.erb (Duration: 0.1ms | Allocations: 10)
+  Rendered users/show.html.erb within layouts/application (Duration: 4.7ms | Allocations: 442)
+  Rendered layout layouts/application.html.erb (Duration: 8.4ms | Allocations: 1925)
+Completed 200 OK in 23ms (Views: 8.8ms | ActiveRecord: 1.9ms | Allocations: 2744)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "postscounter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Raihan"], ["photo", "https://images.unsplash.com/photo-1611003228941-98852ba62227?ixlib=rb-4.0.3&ixid=MnwxM[%E2%80%A6]8MHxzZWFyY2h8Mnx8YmFieSUyMGRvZ3xlbnwwfHwwfHw%3D&w=1000&q=80"], ["bio", "Teacher from Bangla."], ["postscounter", "1"], ["created_at", "2023-03-30 12:47:48.768257"], ["updated_at", "2023-03-30 12:47:48.768257"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.8ms)[0m  [1m[32mINSERT INTO "posts" ("title", "text", "likescounter", "created_at", "updated_at", "author_id", "commentscounter") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Hello World"], ["text", "This is my first @post"], ["likescounter", 0], ["created_at", "2023-04-12 08:31:25.313358"], ["updated_at", "2023-04-12 08:31:25.313358"], ["author_id", 216], ["commentscounter", 0]]
+  [1m[36mPost Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 216]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."id" ASC LIMIT $2[0m  [["author_id", 216], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mComment Create (0.9ms)[0m  [1m[32mINSERT INTO "comments" ("text", "created_at", "updated_at", "author_id", "post_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["text", "This is my first comment"], ["created_at", "2023-04-12 08:31:25.324951"], ["updated_at", "2023-04-12 08:31:25.324951"], ["author_id", 216], ["post_id", 208]]
+  [1m[36mComment Count (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 208]]
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 216], ["LIMIT", 1]]
+  [1m[36mPost Update (0.8ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = $1, "commentscounter" = $2 WHERE "posts"."id" = $3[0m  [["updated_at", "2023-04-12 08:31:25.332811"], ["commentscounter", 1], ["id", 208]]
+  [1m[36mPost Count (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 216]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/216" for 127.0.0.1 at 2023-04-12 13:31:25 +0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"216"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 216], ["LIMIT", 1]]
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 216]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered shared/_user.erb (Duration: 0.1ms | Allocations: 10)
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."created_at" DESC LIMIT $2[0m  [["author_id", 216], ["LIMIT", 3]]
+  Rendered shared/_post.erb (Duration: 0.1ms | Allocations: 10)
+  Rendered users/show.html.erb within layouts/application (Duration: 3.3ms | Allocations: 442)
+  Rendered layout layouts/application.html.erb (Duration: 6.8ms | Allocations: 1938)
+Completed 200 OK in 16ms (Views: 6.8ms | ActiveRecord: 1.8ms | Allocations: 2758)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "postscounter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Raihan"], ["photo", "https://images.unsplash.com/photo-1611003228941-98852ba62227?ixlib=rb-4.0.3&ixid=MnwxM[%E2%80%A6]8MHxzZWFyY2h8Mnx8YmFieSUyMGRvZ3xlbnwwfHwwfHw%3D&w=1000&q=80"], ["bio", "Teacher from Bangla."], ["postscounter", "1"], ["created_at", "2023-03-30 12:47:48.768257"], ["updated_at", "2023-03-30 12:47:48.768257"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.7ms)[0m  [1m[32mINSERT INTO "posts" ("title", "text", "likescounter", "created_at", "updated_at", "author_id", "commentscounter") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Hello World"], ["text", "This is my first @post"], ["likescounter", 0], ["created_at", "2023-04-12 08:31:26.482454"], ["updated_at", "2023-04-12 08:31:26.482454"], ["author_id", 217], ["commentscounter", 0]]
+  [1m[36mPost Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 217]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."id" ASC LIMIT $2[0m  [["author_id", 217], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mComment Create (1.2ms)[0m  [1m[32mINSERT INTO "comments" ("text", "created_at", "updated_at", "author_id", "post_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["text", "This is my first comment"], ["created_at", "2023-04-12 08:31:26.492351"], ["updated_at", "2023-04-12 08:31:26.492351"], ["author_id", 217], ["post_id", 209]]
+  [1m[36mComment Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 209]]
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 217], ["LIMIT", 1]]
+  [1m[36mPost Update (0.7ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = $1, "commentscounter" = $2 WHERE "posts"."id" = $3[0m  [["updated_at", "2023-04-12 08:31:26.503377"], ["commentscounter", 1], ["id", 209]]
+  [1m[36mPost Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 217]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/217" for 127.0.0.1 at 2023-04-12 13:31:26 +0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"217"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 217], ["LIMIT", 1]]
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 217]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered shared/_user.erb (Duration: 0.1ms | Allocations: 10)
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."created_at" DESC LIMIT $2[0m  [["author_id", 217], ["LIMIT", 3]]
+  Rendered shared/_post.erb (Duration: 0.1ms | Allocations: 10)
+  Rendered users/show.html.erb within layouts/application (Duration: 3.7ms | Allocations: 442)
+  Rendered layout layouts/application.html.erb (Duration: 6.5ms | Allocations: 1925)
+Completed 200 OK in 15ms (Views: 6.7ms | ActiveRecord: 1.4ms | Allocations: 2745)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "postscounter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Raihan"], ["photo", "https://images.unsplash.com/photo-1611003228941-98852ba62227?ixlib=rb-4.0.3&ixid=MnwxM[%E2%80%A6]8MHxzZWFyY2h8Mnx8YmFieSUyMGRvZ3xlbnwwfHwwfHw%3D&w=1000&q=80"], ["bio", "Teacher from Bangla."], ["postscounter", "1"], ["created_at", "2023-03-30 12:47:48.768257"], ["updated_at", "2023-03-30 12:47:48.768257"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (1.1ms)[0m  [1m[32mINSERT INTO "posts" ("title", "text", "likescounter", "created_at", "updated_at", "author_id", "commentscounter") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Hello World"], ["text", "This is my first @post"], ["likescounter", 0], ["created_at", "2023-04-12 08:31:27.564914"], ["updated_at", "2023-04-12 08:31:27.564914"], ["author_id", 218], ["commentscounter", 0]]
+  [1m[36mPost Count (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 218]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."id" ASC LIMIT $2[0m  [["author_id", 218], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mComment Create (1.1ms)[0m  [1m[32mINSERT INTO "comments" ("text", "created_at", "updated_at", "author_id", "post_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["text", "This is my first comment"], ["created_at", "2023-04-12 08:31:27.579647"], ["updated_at", "2023-04-12 08:31:27.579647"], ["author_id", 218], ["post_id", 210]]
+  [1m[36mComment Count (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 210]]
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 218], ["LIMIT", 1]]
+  [1m[36mPost Update (0.9ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = $1, "commentscounter" = $2 WHERE "posts"."id" = $3[0m  [["updated_at", "2023-04-12 08:31:27.589963"], ["commentscounter", 1], ["id", 210]]
+  [1m[36mPost Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 218]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/218" for 127.0.0.1 at 2023-04-12 13:31:27 +0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"218"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 218], ["LIMIT", 1]]
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 218]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered shared/_user.erb (Duration: 0.1ms | Allocations: 10)
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."created_at" DESC LIMIT $2[0m  [["author_id", 218], ["LIMIT", 3]]
+  Rendered shared/_post.erb (Duration: 0.1ms | Allocations: 10)
+  Rendered users/show.html.erb within layouts/application (Duration: 2.4ms | Allocations: 442)
+  Rendered layout layouts/application.html.erb (Duration: 6.7ms | Allocations: 1925)
+Completed 200 OK in 19ms (Views: 7.1ms | ActiveRecord: 1.8ms | Allocations: 2744)
+Started GET "/users/218/posts" for 127.0.0.1 at 2023-04-12 13:31:28 +0500
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"218"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 218], ["LIMIT", 1]]
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 218]]
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  Rendered shared/_user.erb (Duration: 0.1ms | Allocations: 12)
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."created_at" DESC LIMIT $2[0m  [["author_id", 218], ["LIMIT", 3]]
+  Rendered shared/_post.erb (Duration: 0.1ms | Allocations: 11)
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC LIMIT $2[0m  [["post_id", 210], ["LIMIT", 5]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 218], ["LIMIT", 1]]
+  Rendered posts/index.html.erb within layouts/application (Duration: 14.8ms | Allocations: 1739)
+  Rendered layout layouts/application.html.erb (Duration: 17.5ms | Allocations: 3295)
+Completed 200 OK in 49ms (Views: 30.9ms | ActiveRecord: 2.9ms | Allocations: 4534)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "postscounter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Raihan"], ["photo", "https://images.unsplash.com/photo-1611003228941-98852ba62227?ixlib=rb-4.0.3&ixid=MnwxM[%E2%80%A6]8MHxzZWFyY2h8Mnx8YmFieSUyMGRvZ3xlbnwwfHwwfHw%3D&w=1000&q=80"], ["bio", "Teacher from Bangla."], ["postscounter", "1"], ["created_at", "2023-03-30 12:47:48.768257"], ["updated_at", "2023-03-30 12:47:48.768257"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (1.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "text", "likescounter", "created_at", "updated_at", "author_id", "commentscounter") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Hello World"], ["text", "This is my first @post"], ["likescounter", 0], ["created_at", "2023-04-12 08:31:31.509491"], ["updated_at", "2023-04-12 08:31:31.509491"], ["author_id", 219], ["commentscounter", 0]]
+  [1m[36mPost Count (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 219]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."id" ASC LIMIT $2[0m  [["author_id", 219], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mComment Create (1.1ms)[0m  [1m[32mINSERT INTO "comments" ("text", "created_at", "updated_at", "author_id", "post_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["text", "This is my first comment"], ["created_at", "2023-04-12 08:31:31.550058"], ["updated_at", "2023-04-12 08:31:31.550058"], ["author_id", 219], ["post_id", 211]]
+  [1m[36mComment Count (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 211]]
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 219], ["LIMIT", 1]]
+  [1m[36mPost Update (1.1ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = $1, "commentscounter" = $2 WHERE "posts"."id" = $3[0m  [["updated_at", "2023-04-12 08:31:31.565697"], ["commentscounter", 1], ["id", 211]]
+  [1m[36mPost Count (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 219]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/219" for 127.0.0.1 at 2023-04-12 13:31:31 +0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"219"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 219], ["LIMIT", 1]]
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 219]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered shared/_user.erb (Duration: 0.2ms | Allocations: 10)
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."created_at" DESC LIMIT $2[0m  [["author_id", 219], ["LIMIT", 3]]
+  Rendered shared/_post.erb (Duration: 0.1ms | Allocations: 10)
+  Rendered users/show.html.erb within layouts/application (Duration: 4.2ms | Allocations: 442)
+  Rendered layout layouts/application.html.erb (Duration: 8.7ms | Allocations: 1925)
+Completed 200 OK in 24ms (Views: 9.4ms | ActiveRecord: 1.7ms | Allocations: 2745)
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (1.9ms)[0m  [1m[32mINSERT INTO "posts" ("title", "text", "likescounter", "created_at", "updated_at", "author_id", "commentscounter") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "title2"], ["text", "content2"], ["likescounter", 0], ["created_at", "2023-04-12 08:31:32.307669"], ["updated_at", "2023-04-12 08:31:32.307669"], ["author_id", 219], ["commentscounter", 0]]
+  [1m[36mPost Count (1.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 219]]
+  [1m[36mUser Update (2.2ms)[0m  [1m[33mUPDATE "users" SET "postscounter" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["postscounter", "2"], ["updated_at", "2023-04-12 08:31:32.321777"], ["id", 219]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (1.2ms)[0m  [1m[32mINSERT INTO "posts" ("title", "text", "likescounter", "created_at", "updated_at", "author_id", "commentscounter") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "title3"], ["text", "content3"], ["likescounter", 0], ["created_at", "2023-04-12 08:31:32.330737"], ["updated_at", "2023-04-12 08:31:32.330737"], ["author_id", 219], ["commentscounter", 0]]
+  [1m[36mPost Count (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 219]]
+  [1m[36mUser Update (1.1ms)[0m  [1m[33mUPDATE "users" SET "postscounter" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["postscounter", "3"], ["updated_at", "2023-04-12 08:31:32.341317"], ["id", 219]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (1.0ms)[0m  [1m[32mINSERT INTO "posts" ("title", "text", "likescounter", "created_at", "updated_at", "author_id", "commentscounter") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "title4"], ["text", "content4"], ["likescounter", 0], ["created_at", "2023-04-12 08:31:32.346514"], ["updated_at", "2023-04-12 08:31:32.346514"], ["author_id", 219], ["commentscounter", 0]]
+  [1m[36mPost Count (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 219]]
+  [1m[36mUser Update (0.9ms)[0m  [1m[33mUPDATE "users" SET "postscounter" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["postscounter", "4"], ["updated_at", "2023-04-12 08:31:32.354733"], ["id", 219]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
