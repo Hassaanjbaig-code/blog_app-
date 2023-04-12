@@ -30,14 +30,14 @@ RSpec.describe Post, type: :system do
       sleep 1
       expect(page.find_all('li h2').length).to eq(1)
     end
-    it "is displayed when there are more posts than fit on the view" do
+    it 'is displayed when there are more posts than fit on the view' do
       10.times do |i|
-        Post.create!(author:@user, title: "Post #{i + 1}", text: "Lorem ipsum dolor sit amet.")
+        Post.create!(author: @user, title: "Post #{i + 1}", text: 'Lorem ipsum dolor sit amet.')
       end
-        sleep 2
-        visit user_posts_path(@user)
-        expect(page).to have_selector(".pagination")
-      end
+      sleep 2
+      visit user_posts_path(@user)
+      expect(page).to have_selector('.pagination')
+    end
     it 'I can see the number of likes' do
       expect(page).to have_content('likes: 0')
     end
