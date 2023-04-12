@@ -14,6 +14,9 @@ RSpec.describe User, type: :system do
     it 'shaould have a name' do
       expect(page).to have_content('Raihan')
     end
+    it "has three visible images" do
+      expect(page).to have_selector("img", visible: true, count: 3)
+    end
     it 'I can see the number of posts each user has' do
       expect(page).to have_content('Number of posts: 1')
     end
