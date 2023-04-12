@@ -11,8 +11,9 @@
    <%= render "shared/post",  post: post %>
     </div>
 <% end %>
-
-<a href=<%="/users/#{@user.id}/posts" %>>
+<div class="btn">
+<a class = "submit-btn" href=<%="/users/#{@user.id}/posts"%>>
 See All Posts
 </a>
+</div>
 </div>

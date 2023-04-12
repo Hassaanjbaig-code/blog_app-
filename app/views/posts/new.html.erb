@@ -1,0 +1,15 @@
+<div class="form-background"> </div>
+    <div class="form">
+<h2 class="form-title">Form for post </h2>
+<%= form_with model: [@user, @post] do |form| %>
+    <%= form.label :title, class:"form_label" %>
+    <%= form.text_field :title, placeholder: "Add a title ", class:"form_text" %>
+    <br>
+    <br>
+    <%= form.label :text, class:"form_label" %>
+    <%= form.text_field :text, placeholder: "Add a text",  class:"form_text" %>
+    <br>
+    <br>
+    <%= form.submit class:"form-submit" %>
+<% end %>
+</div> 

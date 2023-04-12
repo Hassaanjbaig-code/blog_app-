@@ -1,0 +1,11 @@
+<div class="form-background"> </div>
+ <div class="form">
+<h2>Form for comment </h2>
+<%= form_with model: [@user, @post, @comment] do |comments| %>
+    <%= comments.label :text %>
+    <%= comments.text_field :text, placeholder: "Add a text" %>
+    <br>
+    <br>
+    <%= comments.submit class:"form-submit" %>
+<% end %>
+</div>
