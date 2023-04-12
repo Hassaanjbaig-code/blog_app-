@@ -1,5 +1,6 @@
 require 'rails_helper'
 require 'rails-controller-testing'
+
 RSpec.describe User, type: :system do
   describe 'index' do
     before do
