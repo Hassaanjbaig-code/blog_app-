@@ -18983,3 +18983,198 @@ Completed 200 OK in 89ms (Views: 61.7ms | ActiveRecord: 2.5ms | Allocations: 867
 >>>>>>> 3417b0768634044fd97b313eb1bac8e321a86a62
 
 
+Started GET "/" for ::1 at 2023-04-13 20:14:47 +0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (4.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+Completed 401 Unauthorized in 47ms (ActiveRecord: 0.0ms | Allocations: 2718)
+
+
+Started GET "/users/sign_in" for ::1 at 2023-04-13 20:14:49 +0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 4.8ms | Allocations: 840)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 52.0ms | Allocations: 3973)
+  Rendered navbar/_index.html.erb (Duration: 1.7ms | Allocations: 398)
+  Rendered layout layouts/application.html.erb (Duration: 283.0ms | Allocations: 41393)
+Completed 200 OK in 383ms (Views: 321.0ms | ActiveRecord: 22.1ms | Allocations: 53736)
+
+
+Started POST "/users/sign_in" for ::1 at 2023-04-13 20:14:59 +0500
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"foo@yopmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (6.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "foo@yopmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 28ms (ActiveRecord: 7.0ms | Allocations: 3487)
+
+
+Processing by Devise::SessionsController#new as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"foo@yopmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.7ms | Allocations: 186)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 4.8ms | Allocations: 1285)
+  Rendered navbar/_index.html.erb (Duration: 0.3ms | Allocations: 105)
+  Rendered layout layouts/application.html.erb (Duration: 32.8ms | Allocations: 3758)
+Completed 200 OK in 403ms (Views: 34.5ms | ActiveRecord: 0.0ms | Allocations: 5052)
+
+
+Started POST "/users/sign_in" for ::1 at 2023-04-13 20:15:13 +0500
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"foo@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "foo@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 335ms (ActiveRecord: 0.6ms | Allocations: 1707)
+
+
+Processing by Devise::SessionsController#new as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"foo@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.7ms | Allocations: 186)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 4.7ms | Allocations: 1274)
+  Rendered navbar/_index.html.erb (Duration: 0.2ms | Allocations: 102)
+  Rendered layout layouts/application.html.erb (Duration: 27.4ms | Allocations: 3744)
+Completed 200 OK in 401ms (Views: 34.3ms | ActiveRecord: 0.0ms | Allocations: 4292)
+
+
+Started GET "/users/confirmation/new" for ::1 at 2023-04-13 20:15:31 +0500
+Processing by Devise::ConfirmationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/confirmations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 6.5ms | Allocations: 235)
+  Rendered devise/shared/_links.html.erb (Duration: 1.5ms | Allocations: 263)
+  Rendered devise/confirmations/new.html.erb within layouts/application (Duration: 19.2ms | Allocations: 1765)
+  Rendered navbar/_index.html.erb (Duration: 1.0ms | Allocations: 175)
+  Rendered layout layouts/application.html.erb (Duration: 44.6ms | Allocations: 4395)
+Completed 200 OK in 63ms (Views: 55.6ms | ActiveRecord: 0.0ms | Allocations: 5263)
+
+
+Started GET "/users/sign_up" for ::1 at 2023-04-13 20:15:33 +0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 16)
+  Rendered devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 152)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 14.1ms | Allocations: 2137)
+  Rendered navbar/_index.html.erb (Duration: 0.7ms | Allocations: 150)
+  Rendered layout layouts/application.html.erb (Duration: 43.3ms | Allocations: 4742)
+Completed 200 OK in 64ms (Views: 58.0ms | ActiveRecord: 0.0ms | Allocations: 5873)
+
+
+Started POST "/users" for ::1 at 2023-04-13 20:15:45 +0500
+Processing by Devise::RegistrationsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"hoo@yopmail.com", "name"=>"hoo", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+[31mUnpermitted parameter: :password_confirmation. Context: { controller: Devise::RegistrationsController, action: create, request: #<ActionDispatch::Request:0x00000221c593b7d0>, params: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"hoo@yopmail.com", "name"=>"hoo", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up", "controller"=>"devise/registrations", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "hoo@yopmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (17.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "postscounter", "created_at", "updated_at", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "confirmation_token", "confirmed_at", "confirmation_sent_at", "unconfirmed_email") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["name", "hoo"], ["photo", nil], ["bio", nil], ["postscounter", "0"], ["created_at", "2023-04-13 15:15:46.331646"], ["updated_at", "2023-04-13 15:15:46.331646"], ["email", "hoo@yopmail.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["confirmation_token", "[FILTERED]"], ["confirmed_at", nil], ["confirmation_sent_at", "2023-04-13 15:15:46.332484"], ["unconfirmed_email", nil]]
+  [1m[36mTRANSACTION (7.1ms)[0m  [1m[35mCOMMIT[0m
+  Rendering devise/mailer/confirmation_instructions.html.erb
+  Rendered devise/mailer/confirmation_instructions.html.erb (Duration: 2.6ms | Allocations: 319)
+Devise::Mailer#confirmation_instructions: processed outbound mail in 55.7ms
+Delivered mail 64381ca2976bd_4e703ad482232@HassaanBaig.mail (386.3ms)
+Date: Thu, 13 Apr 2023 20:15:46 +0500
+From: please-change-me-at-config-initializers-devise@example.com
+Reply-To: please-change-me-at-config-initializers-devise@example.com
+To: hoo@yopmail.com
+Message-ID: <64381ca2976bd_4e703ad482232@HassaanBaig.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome hoo@yopmail.com!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://localhost:3000/users/confirmation?confirmation_token=fNTKdktyQewgrpFbZpuF">Confirm my account</a></p>
+
+Redirected to http://localhost:3000/
+Completed 303 See Other in 1091ms (ActiveRecord: 25.1ms | Allocations: 29649)
+
+
+Started GET "/" for ::1 at 2023-04-13 20:15:47 +0500
+Processing by UsersController#index as TURBO_STREAM
+Completed 401 Unauthorized in 10ms (ActiveRecord: 0.0ms | Allocations: 320)
+
+
+Started GET "/users/sign_in" for ::1 at 2023-04-13 20:15:47 +0500
+Processing by Devise::SessionsController#new as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.3ms | Allocations: 186)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 8.0ms | Allocations: 1283)
+  Rendered navbar/_index.html.erb (Duration: 0.7ms | Allocations: 134)
+  Rendered layout layouts/application.html.erb (Duration: 42.1ms | Allocations: 3810)
+Completed 200 OK in 57ms (Views: 46.5ms | ActiveRecord: 0.0ms | Allocations: 4485)
+
+
+Started GET "/users/confirmation?confirmation_token=[FILTERED]" for ::1 at 2023-04-13 20:15:49 +0500
+Processing by Devise::ConfirmationsController#show as HTML
+  Parameters: {"confirmation_token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."confirmation_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["confirmation_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (9.9ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "confirmed_at" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2023-04-13 15:15:49.571382"], ["confirmed_at", "2023-04-13 15:15:49.570857"], ["id", 3]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/users/sign_in
+Completed 302 Found in 39ms (ActiveRecord: 11.7ms | Allocations: 5232)
+
+
+Started GET "/users/sign_in" for ::1 at 2023-04-13 20:15:49 +0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.2ms | Allocations: 186)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 6.7ms | Allocations: 1281)
+  Rendered navbar/_index.html.erb (Duration: 0.4ms | Allocations: 134)
+  Rendered layout layouts/application.html.erb (Duration: 30.3ms | Allocations: 3789)
+Completed 200 OK in 39ms (Views: 33.3ms | ActiveRecord: 0.0ms | Allocations: 4445)
+
+
+Started POST "/users/sign_in" for ::1 at 2023-04-13 20:16:01 +0500
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"hoo@yopmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "hoo@yopmail.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 303 See Other in 344ms (ActiveRecord: 0.8ms | Allocations: 2603)
+
+
+Started GET "/" for ::1 at 2023-04-13 20:16:01 +0500
+Processing by UsersController#index as TURBO_STREAM
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:2
+  Rendered shared/_user.erb (Duration: 1.4ms | Allocations: 182)
+  Rendered shared/_user.erb (Duration: 0.1ms | Allocations: 12)
+  Rendered shared/_user.erb (Duration: 0.1ms | Allocations: 12)
+  Rendered users/index.html.erb within layouts/application (Duration: 14.9ms | Allocations: 1470)
+  Rendered navbar/_index.html.erb (Duration: 0.5ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 41.3ms | Allocations: 4074)
+Completed 200 OK in 67ms (Views: 51.5ms | ActiveRecord: 1.7ms | Allocations: 6207)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2023-04-13 20:16:08 +0500
+Processing by Devise::SessionsController#destroy as TURBO_STREAM
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 303 See Other in 233ms (ActiveRecord: 1.3ms | Allocations: 12993)
+
+
+Started GET "/" for ::1 at 2023-04-13 20:16:08 +0500
+Processing by UsersController#index as TURBO_STREAM
+Completed 401 Unauthorized in 4ms (ActiveRecord: 0.0ms | Allocations: 263)
+
+
+Started GET "/users/sign_in" for ::1 at 2023-04-13 20:16:09 +0500
+Processing by Devise::SessionsController#new as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 186)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 4.0ms | Allocations: 1286)
+  Rendered navbar/_index.html.erb (Duration: 0.9ms | Allocations: 134)
+  Rendered layout layouts/application.html.erb (Duration: 27.8ms | Allocations: 3794)
+Completed 200 OK in 37ms (Views: 31.0ms | ActiveRecord: 0.0ms | Allocations: 4444)
+
+
